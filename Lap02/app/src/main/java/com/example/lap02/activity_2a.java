@@ -21,8 +21,8 @@ public class activity_2a extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtName.getText().equals("")){
-                    Toast.makeText(activity_2a.this, "Not thing to show", Toast.LENGTH_SHORT).show();
+                if(edtName.getText().toString().equals("")){
+                    Toast.makeText(activity_2a.this, "Nothing to show", Toast.LENGTH_SHORT).show();
                 }
                 else Toast.makeText(activity_2a.this, edtName.getText(), Toast.LENGTH_SHORT).show();
             }

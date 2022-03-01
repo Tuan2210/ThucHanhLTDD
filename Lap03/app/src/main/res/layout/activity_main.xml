@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgBook"
         android:layout_width="123dp"
         android:layout_height="183dp"
         android:layout_marginStart="16dp"
@@ -26,7 +26,7 @@
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBook"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBook"
         app:layout_constraintTop_toBottomOf="@+id/lblNguyenHam" />
 
     <TextView
@@ -58,7 +58,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBook"
         app:layout_constraintTop_toBottomOf="@+id/lblCungCap" />
 
     <TextView
@@ -75,7 +75,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBook"
         app:layout_constraintTop_toBottomOf="@+id/lblGia" />
 
     <Button
@@ -103,7 +103,7 @@
         android:contentDescription="@string/app_name"
         android:drawableLeft="@drawable/btnminus"
         app:layout_constraintEnd_toStartOf="@+id/lblSoLuong"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgBook"
         app:layout_constraintTop_toBottomOf="@+id/lblGia2" />
 
     <TextView
@@ -148,7 +148,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBook" />
 
     <TextView
         android:id="@+id/lblXem"
@@ -167,7 +167,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edtMaGiamGia"
         android:layout_width="231dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -186,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lblMa" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnApDung"
         android:layout_width="109dp"
         android:layout_height="56dp"
         android:layout_marginStart="28dp"
@@ -194,11 +194,11 @@
         android:backgroundTint="#0A5EB7"
         android:text="Áp dụng"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/edtMaGiamGia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toEndOf="@+id/edtMaGiamGia"
+        app:layout_constraintTop_toTopOf="@+id/edtMaGiamGia" />
 
     <View
         android:id="@+id/view1"
@@ -210,7 +210,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/btnApDung" />
 
     <View
         android:id="@+id/view2"

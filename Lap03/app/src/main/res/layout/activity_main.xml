@@ -98,9 +98,11 @@
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="7dp"
         android:backgroundTint="#C4C4C4"
         android:contentDescription="@string/app_name"
         android:drawableLeft="@drawable/btnminus"
+        app:layout_constraintEnd_toStartOf="@+id/lblSoLuong"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/lblGia2" />
 
@@ -108,12 +110,13 @@
         android:id="@+id/lblSoLuong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="7dp"
         android:text="1"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnMinus"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlus"
         app:layout_constraintStart_toEndOf="@+id/btnMinus"
         app:layout_constraintTop_toTopOf="@+id/btnMinus" />
 
@@ -210,7 +213,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/view2"
         android:layout_width="415dp"
         android:layout_height="10dp"
         android:layout_marginTop="11dp"
@@ -220,6 +223,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLinkNhapTaiDay" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="415dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="122dp"
+        android:background="#C4C4C4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTamTinh"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/lblBan"
@@ -247,5 +263,81 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lblBan"
         app:layout_constraintTop_toTopOf="@+id/lblBan" />
+
+    <TextView
+        android:id="@+id/lblTamTinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Tạm tính"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <TextView
+        android:id="@+id/lblGiaTinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="203dp"
+        android:layout_marginEnd="24dp"
+        android:text="141.800 đ"
+        android:textColor="#EE0D0D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblTamTinh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/lblTamTinh"
+        app:layout_constraintTop_toTopOf="@+id/lblTamTinh" />
+
+    <TextView
+        android:id="@+id/lblGiaTinh2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="186dp"
+        android:layout_marginEnd="20dp"
+        android:text="141.800 đ"
+        android:textColor="#EE0D0D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblThanhTien"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblThanhTien"
+        app:layout_constraintTop_toTopOf="@+id/lblThanhTien" />
+
+    <TextView
+        android:id="@+id/lblThanhTien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="13dp"
+        android:text="Thành tiền"
+        android:textColor="#808080"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <Button
+        android:id="@+id/btnDatHang"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="17dp"
+        android:backgroundTint="#E53935"
+        android:text="TIẾN HÀNH ĐẶT HÀNG"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblGiaTinh2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

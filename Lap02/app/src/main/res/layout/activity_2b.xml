@@ -34,91 +34,132 @@
         android:id="@+id/lblCucky"
         android:layout_width="148dp"
         android:layout_height="27dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="56dp"
         android:text="Cực kỳ hài lòng"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblUsbBluetooth" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgStar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCucky"
         app:srcCompat="@drawable/star" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgStar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar1"
+        app:layout_constraintStart_toEndOf="@+id/imgStar1"
+        app:layout_constraintTop_toTopOf="@+id/imgStar1"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/star" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imgStar3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar2"
+        app:layout_constraintStart_toEndOf="@+id/imgStar2"
+        app:layout_constraintTop_toTopOf="@+id/imgStar2"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/star" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgStar4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar3"
+        app:layout_constraintStart_toEndOf="@+id/imgStar3"
+        app:layout_constraintTop_toTopOf="@+id/imgStar3"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/star" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imgStar5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
         android:layout_marginEnd="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.978"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imgStar4"
+        app:layout_constraintTop_toTopOf="@+id/imgStar4"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/star" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="321dp"
+        android:id="@+id/frmThemHinh"
+        android:layout_width="320dp"
         android:layout_height="72dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/border2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/imgStar1">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lblThem"
-            android:layout_width="match_parent"
-            android:layout_height="95dp"
-            android:layout_marginTop="-14dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/camera"
-            android:drawablePadding="15dp"
+            android:drawablePadding="48dp"
             android:hint="Thêm hình ảnh"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <EditText
+        android:id="@+id/edtChiaSe"
+        android:layout_width="320dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/border3"
+        android:ems="10"
+        android:hint="Hãy chia sẽ những điều mà bạn thích về sản phẩm"
+        android:inputType="textLongMessage|textMultiLine"
+        android:textColorHint="#C4C4C4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frmThemHinh" />
+
+    <Button
+        android:id="@+id/btnGui"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/border4"
+        android:text="Gửi"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtChiaSe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

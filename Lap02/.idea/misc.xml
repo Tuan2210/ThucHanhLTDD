@@ -5,6 +5,10 @@
       <map>
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable-anydpi/eye_off.xml" value="0.1695" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/background.xml" value="0.2115" />
+        <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/background_2a.xml" value="0.2115" />
+        <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/background_2c.xml" value="0.2115" />
+        <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/background_2c_in.xml" value="0.179" />
+        <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/background_in_2c.xml" value="0.179" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/bg.xml" value="0.1695" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/border.xml" value="0.1695" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/border2.xml" value="0.2115" />
@@ -13,6 +17,7 @@
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/drawable/eye_off.xml" value="0.1695" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/layout/activity_2a.xml" value="0.25" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/layout/activity_2b.xml" value="0.25" />
+        <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/layout/activity_2c.xml" value="0.25" />
         <entry key="..\:/hk2_21-22/LTDiDong/ThucHanh/Lap02/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
       </map>
     </option>

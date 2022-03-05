@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_2c"
+    tools:context=".activity_2c">
+
+    <View
+        android:id="@+id/view_bg_in"
+        android:layout_width="350dp"
+        android:layout_height="552dp"
+        android:background="@drawable/background_in_2c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
+
+    <TextView
+        android:id="@+id/lblPass"
+        android:layout_width="165dp"
+        android:layout_height="61dp"
+        android:text="PASSWORD GENERATOR"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toTopOf="@+id/view_bg_in"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <EditText
+        android:id="@+id/edtPassGen"
+        android:layout_width="297dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:background="#151537"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="#FFEB3B"
+        android:textColorHint="#3EFFEB3B"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/lblPass" />
+
+    <TextView
+        android:id="@+id/lblPassLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Password length"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassGen" />
+
+    <EditText
+        android:id="@+id/plainTXTPassLength"
+        android:layout_width="118dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="24dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblPassLength"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintTop_toTopOf="@+id/lblPassLength"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/lblLowerCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Include lower-case letters"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/lblPassLength" />
+
+    <TextView
+        android:id="@+id/lblUpperCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Include upper-case letters"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/lblLowerCase" />
+
+    <TextView
+        android:id="@+id/lblNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Include number"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/lblUpperCase" />
+
+    <TextView
+        android:id="@+id/lblSpecialSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Include special symbol"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/lblNumber" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:buttonTint="#FFFFFF"
+        android:padding="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblLowerCase"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintStart_toEndOf="@+id/lblLowerCase"
+        app:layout_constraintTop_toTopOf="@+id/lblLowerCase" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:buttonTint="#FFFFFF"
+        android:padding="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblUpperCase"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintStart_toEndOf="@+id/lblUpperCase"
+        app:layout_constraintTop_toTopOf="@+id/lblUpperCase" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:buttonTint="#FFFFFF"
+        android:padding="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblNumber"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toEndOf="@+id/lblNumber"
+        app:layout_constraintTop_toTopOf="@+id/lblNumber" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:buttonTint="#FFFFFF"
+        android:padding="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblSpecialSymbol"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toEndOf="@+id/lblSpecialSymbol"
+        app:layout_constraintTop_toTopOf="@+id/lblSpecialSymbol" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="#3B3B98"
+        android:text="GENERATE PASSWORD"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view_bg_in"
+        app:layout_constraintEnd_toEndOf="@+id/view_bg_in"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/view_bg_in"
+        app:layout_constraintTop_toBottomOf="@+id/lblSpecialSymbol"
+        app:layout_constraintVertical_bias="0.49" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

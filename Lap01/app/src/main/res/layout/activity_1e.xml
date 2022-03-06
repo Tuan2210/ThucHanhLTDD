@@ -4,26 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_1d_e"
     tools:context=".activity_1e">
-
-    <ImageView
-        android:id="@+id/bg_1e"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/background_1d_e" />
 
     <TextView
         android:id="@+id/lblRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginTop="40dp"
         android:text="REGISTER"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
@@ -31,20 +19,20 @@
         android:textColorLink="#000000"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bg_1e" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/edtName"
         android:layout_width="354dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:background="#C4C4C4"
         android:backgroundTint="#C4C4C4"
         android:ems="10"
-        android:hint="   Name"
+        android:paddingLeft="18dp"
+        android:hint="Name"
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
@@ -57,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lblRegister" />
 
     <EditText
-        android:id="@+id/txtPhone"
+        android:id="@+id/edtPhone"
         android:layout_width="354dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -65,28 +53,30 @@
         android:background="#C4C4C4"
         android:backgroundTint="#C4C4C4"
         android:ems="10"
-        android:hint="   Phone"
+        android:paddingLeft="18dp"
+        android:hint="Phone"
         android:inputType="phone"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
         android:textColorHint="#80000000"
         android:textColorLink="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtEmail3"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmailRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
     <EditText
-        android:id="@+id/txtEmail3"
+        android:id="@+id/edtEmailRegister"
         android:layout_width="354dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="#C4C4C4"
         android:backgroundTint="#C4C4C4"
         android:ems="10"
-        android:hint="   Email"
+        android:paddingLeft="18dp"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
@@ -96,50 +86,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
 
-    <EditText
-        android:id="@+id/txtPass3"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="354dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#C4C4C4"
-        android:backgroundTint="#C4C4C4"
-        android:ems="10"
-        android:hint="   Password"
-        android:inputType="textLongMessage|textPassword"
-        android:textColor="#000000"
-        android:textColorHighlight="#000000"
         android:textColorHint="#80000000"
-        android:textColorLink="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtBirthday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail3" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEmailRegister"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#000000"
+        app:passwordToggleTintMode="src_in">
 
-    <ImageView
-        android:id="@+id/imgEye2"
-        android:layout_width="54dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtPass3"
-        app:layout_constraintEnd_toEndOf="@+id/txtPass3"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="@+id/txtPass3"
-        app:layout_constraintTop_toTopOf="@+id/txtPass3"
-        app:srcCompat="@drawable/eye" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassRegister"
+            android:layout_width="354dp"
+            android:layout_height="match_parent"
+            android:background="#C4C4C4"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/txtBirthday"
+        android:id="@+id/edtBirthday"
         android:layout_width="354dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="#C4C4C4"
         android:backgroundTint="#C4C4C4"
         android:ems="10"
-        android:hint="   Birthday"
+        android:paddingLeft="18dp"
+        android:hint="Birthday"
         android:inputType="date"
         android:textColor="#000000"
         android:textColorHighlight="#000000"
@@ -149,43 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPass3" />
-
-    <RadioButton
-        android:id="@+id/rdoMale"
-        android:layout_width="88dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginBottom="7dp"
-        android:text="  Male"
-        android:textColor="#000000"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toStartOf="@+id/rdoFemale"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBirthday" />
-
-    <RadioButton
-        android:id="@+id/rdoFemale"
-        android:layout_width="109dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="8dp"
-        android:text="  Female"
-        android:textColor="#000000"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBirthday" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -203,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdoFemale" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
         android:id="@+id/lblWhenYou"
@@ -216,10 +162,45 @@
         android:textColorHint="#000000"
         android:textColorLink="#000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/bg_1e"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="252dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtBirthday">
+
+        <RadioButton
+            android:id="@+id/rdoMale"
+            android:layout_width="88dp"
+            android:layout_height="50dp"
+            android:text="  Male"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/rdoFemale"
+            android:layout_width="109dp"
+            android:layout_height="50dp"
+            android:text="  Female"
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorHint="#000000"
+            android:textColorLink="#000000"
+            android:textSize="18sp"
+            android:translationX="145dp"
+            android:translationY="-50dp" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

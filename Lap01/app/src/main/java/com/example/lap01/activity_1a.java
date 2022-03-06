@@ -39,7 +39,7 @@ public class activity_1a extends AppCompatActivity {
         }));
 
         //sk nút sign up
-        ((Button)this.findViewById(R.id.btnSignUp)).setOnClickListener((View.OnClickListener)(new View.OnClickListener() {
+        findViewById(R.id.btnSignUp).setOnClickListener((View.OnClickListener)(new View.OnClickListener() {
             public final void onClick(View it) {
                 Intent intent = new Intent((Context)activity_1a.this, activity_1e.class);
                 activity_1a.this.startActivity(intent);

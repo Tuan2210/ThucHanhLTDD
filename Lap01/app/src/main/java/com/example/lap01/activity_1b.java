@@ -22,13 +22,14 @@ public class activity_1b extends AppCompatActivity {
         //sk nút next
         findViewById(R.id.btnNext).setOnClickListener((View.OnClickListener)(new View.OnClickListener() {
             public final void onClick(View it) {
-                if(edtEmailResetPass.getText().toString().equals("")){
-                    Toast.makeText(activity_1b.this, "Email is empty", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if(edtEmailResetPass.getText().toString().equals(""))
+                    Toast.makeText(activity_1b.this, "Email is empty!", Toast.LENGTH_SHORT).show();
+                if(edtEmailResetPass.getText().toString().equals("quangtuan496@gmail.com")){
                     Intent intent = new Intent((Context) activity_1b.this, activity_1c.class);
                     activity_1b.this.startActivity(intent);
                 }
+                if(!edtEmailResetPass.getText().toString().equals(""))
+                    Toast.makeText(activity_1b.this, "Email is error!", Toast.LENGTH_SHORT).show();
             }
         }));
     }

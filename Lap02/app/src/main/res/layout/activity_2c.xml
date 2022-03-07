@@ -186,7 +186,7 @@
         app:layout_constraintTop_toTopOf="@+id/lblSpecialSymbol" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnGenPass"
         android:layout_width="0dp"
         android:layout_height="65dp"
         android:layout_marginStart="24dp"

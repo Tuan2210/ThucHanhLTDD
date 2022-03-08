@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_3c_sreen1">
+
+    <ImageView
+        android:id="@+id/imgVSmartBlue"
+        android:layout_width="250dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vsmart_live_xanh_1" />
+
+    <TextView
+        android:id="@+id/tvVSmartBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Điện thoại Vsmart Joy 3 - Hàng chính hãng"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgVSmartBlue" />
+
+    <ImageView
+        android:id="@+id/imgStar1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVSmartBlue"
+        app:srcCompat="@drawable/star" />
+
+    <ImageView
+        android:id="@+id/imgStar2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar1"
+        app:layout_constraintStart_toEndOf="@+id/imgStar1"
+        app:layout_constraintTop_toTopOf="@+id/imgStar1"
+        app:srcCompat="@drawable/star" />
+
+    <ImageView
+        android:id="@+id/imgStar3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar2"
+        app:layout_constraintStart_toEndOf="@+id/imgStar2"
+        app:layout_constraintTop_toTopOf="@+id/imgStar2"
+        app:srcCompat="@drawable/star" />
+
+    <ImageView
+        android:id="@+id/imgStar4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar3"
+        app:layout_constraintStart_toEndOf="@+id/imgStar3"
+        app:layout_constraintTop_toTopOf="@+id/imgStar3"
+        app:srcCompat="@drawable/star" />
+
+    <ImageView
+        android:id="@+id/imgStar5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar4"
+        app:layout_constraintStart_toEndOf="@+id/imgStar4"
+        app:layout_constraintTop_toTopOf="@+id/imgStar4"
+        app:srcCompat="@drawable/star" />
+
+    <TextView
+        android:id="@+id/tvXemDanhGia1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(Xem 828 đánh giá)"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toEndOf="@+id/imgStar5"
+        app:layout_constraintTop_toTopOf="@+id/imgStar5" />
+
+    <TextView
+        android:id="@+id/tvGiaGiam1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:text="1.790.000 đ"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgStar1" />
+
+    <TextView
+        android:id="@+id/tvGiaGoc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line"
+        android:text="1.790.000 đ"
+        android:textColor="#94000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvGiaGiam1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintStart_toEndOf="@+id/tvGiaGiam1"
+        app:layout_constraintTop_toTopOf="@+id/tvGiaGiam1" />
+
+    <TextView
+        android:id="@+id/tvHoanTien1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:text="Ở ĐÂU RẺ HƠN HOÀN TIỀN"
+        android:textColor="#FA0000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGiaGiam1" />
+
+    <ImageButton
+        android:id="@+id/imgDauHoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHoanTien1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toEndOf="@+id/tvHoanTien1"
+        app:layout_constraintTop_toTopOf="@+id/tvHoanTien1"
+        app:srcCompat="@drawable/dauhoi"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnChonMau1"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/btn_chonmau"
+        android:drawableEnd="@drawable/vector"
+        android:text="4 MÀU - CHỌN MÀU"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoanTien1"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnChonMua1"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/btn_chonmua"
+        android:backgroundTint="#EE0A0A"
+        android:text="CHỌN MUA"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChonMau1"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

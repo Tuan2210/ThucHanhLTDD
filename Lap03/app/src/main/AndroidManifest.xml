@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lap03">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity_3c_sreen1"
+            android:exported="false" />
+        <activity
+            android:name=".activity_3a"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,5 +13,6 @@ public class activity_3a extends AppCompatActivity {
         setContentView(R.layout.activity_3a);
 
 //        activity_3a.this.startActivity(new Intent(activity_3a.this, activity_3c_srceen1.class));
+//        activity_3a.this.startActivity(new Intent(activity_3a.this, activity_3c_screen4.class));
     }
 }

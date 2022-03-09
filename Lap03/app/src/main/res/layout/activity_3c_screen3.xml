@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_3c_screen2">
+    tools:context=".activity_3c_screen3">
 
     <ImageView
         android:id="@+id/imgviewVSmartRed"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vsmart_live_xanh_1" />
+        app:srcCompat="@drawable/vs_red_a_1" />
 
     <TextView
         android:id="@+id/tvVSmart"
         android:layout_width="171dp"
         android:layout_height="43dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="106dp"
+        android:layout_marginEnd="88dp"
         android:text="Điện thoại Vsmart Joy 3 Hàng chính hãng"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -31,10 +32,9 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="413dp"
-        android:layout_height="441dp"
+        android:layout_width="411dp"
+        android:layout_height="438dp"
         android:layout_marginTop="19dp"
-        android:layout_marginBottom="1dp"
         android:background="#C4C4C4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,5 +156,71 @@
         app:layout_constraintTop_toBottomOf="@+id/viewBlue"
         app:layout_constraintVertical_bias="0.428"/>
 
+    <TextView
+        android:id="@+id/tvMau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="Màu:"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/imgviewVSmartRed"
+        app:layout_constraintTop_toBottomOf="@+id/tvVSmart" />
+
+    <TextView
+        android:id="@+id/tvDo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="đỏ"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toEndOf="@+id/tvMau"
+        app:layout_constraintTop_toTopOf="@+id/tvMau" />
+
+    <TextView
+        android:id="@+id/tvCungCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="Cung cấp bởi"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/imgviewVSmartRed"
+        app:layout_constraintTop_toBottomOf="@+id/tvMau" />
+
+    <TextView
+        android:id="@+id/tvTiki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiki Tradding"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCungCap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/tvCungCap"
+        app:layout_constraintTop_toTopOf="@+id/tvCungCap" />
+
+    <TextView
+        android:id="@+id/tvGia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="148dp"
+        android:text="1.790.000 đ"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgviewVSmartRed"
+        app:layout_constraintTop_toBottomOf="@+id/tvCungCap"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

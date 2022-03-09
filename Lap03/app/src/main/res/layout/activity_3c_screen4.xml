@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_3c_srceen1">
+    tools:context=".activity_3c_screen4">
 
     <ImageView
         android:id="@+id/imgVSmartBlue"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vsmart_live_xanh_1" />
+        app:srcCompat="@drawable/vs_red_a_1" />
 
     <TextView
         android:id="@+id/tvVSmartChinhHang"

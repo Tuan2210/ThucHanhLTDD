@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_3c_sreen1">
+    tools:context=".activity_3c_srceen1">
 
     <ImageView
         android:id="@+id/imgVSmartBlue"
@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/vsmart_live_xanh_1" />
 
     <TextView
-        android:id="@+id/tvVSmartBlue"
+        android:id="@+id/tvVSmartBlue1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -36,7 +36,7 @@
         android:layout_marginStart="54dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVSmartBlue"
+        app:layout_constraintTop_toBottomOf="@+id/tvVSmartBlue1"
         app:srcCompat="@drawable/star" />
 
     <ImageView

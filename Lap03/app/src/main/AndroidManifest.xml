@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lap03">
         <activity
-            android:name=".activity_3c_sreen1"
+            android:name=".activity_3c_screen2"
+            android:exported="false" />
+        <activity
+            android:name=".activity_3c_srceen1"
             android:exported="false" />
         <activity
             android:name=".activity_3a"

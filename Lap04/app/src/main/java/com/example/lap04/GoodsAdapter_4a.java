@@ -13,13 +13,13 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class GoodsAdapter extends BaseAdapter {
+public class GoodsAdapter_4a extends BaseAdapter {
     private Context context;
     private int idLayout;
-    private List<Goods> listGoods;
+    private List<Goods_4a> listGoods;
     private int positionSelect = -1;
 
-    public GoodsAdapter(Context context, int idLayout, List<Goods> listGoods) {
+    public GoodsAdapter_4a(Context context, int idLayout, List<Goods_4a> listGoods) {
         this.context = context;
         this.idLayout = idLayout;
         this.listGoods = listGoods;
@@ -49,11 +49,11 @@ public class GoodsAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(idLayout, parent, false);
         }
 
-        TextView tvGoodsName = (TextView) convertView.findViewById(R.id.tvGoodsName),
+        TextView tvGoodsName = (TextView) convertView.findViewById(R.id.tvGoodsName_4a),
                  tvShopName = convertView.findViewById(R.id.tvShopName);
-        ImageView imgGoods = (ImageView) convertView.findViewById(R.id.imgGoods);
+        ImageView imgGoods = (ImageView) convertView.findViewById(R.id.imgGoods_4a);
         final LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.idLinearLayout);
-        final Goods goods = listGoods.get(position);
+        final Goods_4a goods = listGoods.get(position);
 
         if (listGoods != null && !listGoods.isEmpty()) {
             tvGoodsName.setText(goods.getName());

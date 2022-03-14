@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lap04">
         <activity
+            android:name=".activity_4b_main"
+            android:exported="false" />
+        <activity
             android:name=".activity_4a_main"
             android:exported="true">
             <intent-filter>

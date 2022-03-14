@@ -1,6 +1,6 @@
 package com.example.lap04;
 
-public class Goods {
+public class Goods_4a {
     private int id;
     private String name;
     private String shopName;
@@ -38,7 +38,7 @@ public class Goods {
         this.imgGoods = imgGoods;
     }
 
-    public Goods(int id, String name, String shopName, int imgGoods) {
+    public Goods_4a(int id, String name, String shopName, int imgGoods) {
         this.id = id;
         this.name = name;
         this.shopName = shopName;

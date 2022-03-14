@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:weightSum="1">
         <ImageView
-            android:id="@+id/imgGoods"
+            android:id="@+id/imgGoods_4a"
             android:layout_width="100dp"
             android:layout_height="90dp"
             android:contentDescription="@null"
@@ -31,7 +31,7 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/tvGoodsName"
+            android:id="@+id/tvGoodsName_4a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

@@ -7,7 +7,7 @@
     tools:context=".activity_4a_main">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listView_4a"
         android:layout_width="411dp"
         android:layout_height="544dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
         android:layout_height="37dp"
         android:text="Bạn có thắc mắc với sản phẩm vừa xem. Đừng ngại chat với shop!"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintBottom_toTopOf="@+id/listView_4a"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"

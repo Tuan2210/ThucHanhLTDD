@@ -9,9 +9,30 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="411dp"
-        android:layout_height="605dp"
+        android:layout_height="544dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewThacMac" />
+
+    <View
+        android:id="@+id/viewThacMac"
+        android:layout_width="412dp"
+        android:layout_height="58dp"
+        android:background="#CCCCCC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvThacMac"
+        android:layout_width="324dp"
+        android:layout_height="37dp"
+        android:text="Bạn có thắc mắc với sản phẩm vừa xem. Đừng ngại chat với shop!"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewThacMac" />
 </androidx.constraintlayout.widget.ConstraintLayout>

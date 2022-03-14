@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/idLinearLayout"
-    android:layout_height="100dp"
+    android:layout_height="90dp"
     android:background="#FFFFFF"
     android:orientation="horizontal">
 
@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/imgGoods"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:contentDescription="@null"
             android:gravity="center"
             android:src="@drawable/ca_nau_lau"/>
@@ -48,7 +48,7 @@
             android:layout_marginTop="10dp"
             android:text="Shop Devang"
             android:textColor="#E83030"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <Button
             android:id="@+id/btnChat"

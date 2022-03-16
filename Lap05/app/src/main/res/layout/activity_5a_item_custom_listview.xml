@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/idLinearLayout"
+    android:layout_height="114dp"
+    android:background="#FFFFFF"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:layout_marginBottom="487dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="370dp"
+            android:layout_height="105dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_list_donuts"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgDonut"
+                android:layout_width="95dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                app:srcCompat="@drawable/donut_yellow_1" />
+
+            <TextView
+                android:id="@+id/tvDonutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="-80dp"
+                android:text="Tasty Donut"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDescripeDonut"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="8dp"
+                android:text="Spicy tasty donut family"
+                android:textColor="#8C000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                android:text="$10.00"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnPlus"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="325dp"
+                android:layout_marginTop="-43dp"
+                android:background="@drawable/btn_plus"
+                app:srcCompat="@drawable/plus_button"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

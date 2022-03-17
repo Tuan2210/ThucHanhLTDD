@@ -1,6 +1,8 @@
 package com.example.lap05;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,7 @@ public class DonutAdapter extends BaseAdapter {
     private List<Donut> listDonut;
     private int positionSelect = -1;
     private MainActivity_5a mainActivity_5a;
-    //private MainActivity_5b mainActivity_5b;
+    private MainActivity_5b mainActivity_5b;
 
     public DonutAdapter(Context context, int idLayout, List<Donut> listDonut) {
         this.context = context;
@@ -83,6 +85,13 @@ public class DonutAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Toast.makeText(context, donut.getDonutName(), Toast.LENGTH_LONG).show();
                 positionSelect = position;
+
+                Intent intent = new Intent(view.getContext(), MainActivity_5b.class);
+                intent.putExtra("imgDonut", donut.getImgDonut());
+                intent.putExtra("donutName", donut.getDonutName());
+                intent.putExtra("donutPrice", donut.getDonutPrice());
+                view.getContext().startActivity(intent);
+
                 notifyDataSetChanged();
             }
         });

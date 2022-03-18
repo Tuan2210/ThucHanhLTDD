@@ -16,7 +16,7 @@ public class MainActivity_5b extends AppCompatActivity {
         ImageView imgDonut = findViewById(R.id.imgPinkDonut);
         TextView tvDonut = findViewById(R.id.tvPinkDonut),
                  tvPrice = findViewById(R.id.tvPricePink);
-        
+
         int img = getIntent().getIntExtra("imgDonut",0);
         String name = getIntent().getStringExtra("donutName"),
                price = getIntent().getStringExtra("donutPrice");

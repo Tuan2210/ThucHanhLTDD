@@ -3,10 +3,13 @@ package com.example.lap05;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -80,6 +83,8 @@ public class DonutAdapter extends BaseAdapter {
                     break;
             }
         }
+
+        //truyền data sang activity khác
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +110,25 @@ public class DonutAdapter extends BaseAdapter {
 //                }
 //            });
 //        }
+
+        //tìm kiếm
+        EditText edtSearch = mainActivity_5a.findViewById(R.id.edtSearch);
+//        edtSearch.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
 
         return convertView;
     }

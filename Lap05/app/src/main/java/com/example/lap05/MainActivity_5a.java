@@ -6,9 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +26,7 @@ import java.util.List;
 public class MainActivity_5a extends AppCompatActivity {
     private List<Donut> listDonut = new ArrayList<>();
     private ListView listView;
+    private DonutAdapter donutAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,37 +55,36 @@ public class MainActivity_5a extends AppCompatActivity {
             }
         });
 
-//        findViewById(R.id.edtSearch).addTextChangedListener(new TextWatcher() {
-//
+//        EditText edtSearch = findViewById(R.id.edtSearch);
+//        edtSearch.addTextChangedListener(new TextWatcher() {
 //            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                // Call back the Adapter with current character to Filter
-//                adapter.getFilter().filter(s.toString());
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
 //            }
 //
 //            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                donutAdapter.getFilter().filter(charSequence.toString());
 //            }
 //
 //            @Override
-//            public void afterTextChanged(Editable s) {
+//            public void afterTextChanged(Editable editable) {
+//
 //            }
 //        });
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//        SearchView svDonut = findViewById(R.id.svDonut);
+//        svDonut.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                showInfoPinkDonut(position);
+//            public boolean onQueryTextSubmit(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                donutAdapter.getFilter().filter(s);
+//                return false;
 //            }
 //        });
     }
-
-//    private void showInfoPinkDonut(int position){
-//        Donut donut = listDonut.get(position);
-//        Intent intent = new Intent(MainActivity_5a.this, MainActivity_5b.class);
-//        intent.putExtra("donutName", donut.getDonutName());
-//        intent.putExtra("donutPrice", donut.getDonutPrice());
-//
-//        startActivity(intent);
-//    }
 }

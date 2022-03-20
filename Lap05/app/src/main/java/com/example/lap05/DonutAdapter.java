@@ -10,20 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
-public class DonutAdapter extends BaseAdapter {
+public class DonutAdapter extends BaseAdapter implements Filterable {
     private Context context;
     private int idLayout;
     private List<Donut> listDonut;
     private int positionSelect = -1;
+
     private MainActivity_5a mainActivity_5a;
     private MainActivity_5b mainActivity_5b;
+
+    //private ItemFilter itemFilter = new ItemFilter();
 
     public DonutAdapter(Context context, int idLayout, List<Donut> listDonut) {
         this.context = context;
@@ -66,22 +74,22 @@ public class DonutAdapter extends BaseAdapter {
             tvDonutName.setText(donut.getDonutName());
             tvPrice.setText(donut.getDonutPrice());
             int idDonut = donut.getId();
-            switch (idDonut){
-                case 1:
-                    imgDonut.setImageResource(R.drawable.donut_yellow_1);
-                    break;
-                case 2:
-                    imgDonut.setImageResource(R.drawable.tasty_donut_1);
-                    break;
-                case 3:
-                    imgDonut.setImageResource(R.drawable.green_donut_1);
-                    break;
-                case 4:
-                    imgDonut.setImageResource(R.drawable.donut_red_1);
-                    break;
-                default:
-                    break;
-            }
+//            switch (idDonut){
+//                case 1:
+//                    imgDonut.setImageResource(R.drawable.donut_yellow_1);
+//                    break;
+//                case 2:
+//                    imgDonut.setImageResource(R.drawable.tasty_donut_1);
+//                    break;
+//                case 3:
+//                    imgDonut.setImageResource(R.drawable.green_donut_1);
+//                    break;
+//                case 4:
+//                    imgDonut.setImageResource(R.drawable.donut_red_1);
+//                    break;
+//                default:
+//                    break;
+//            }
         }
 
         //truyền data sang activity khác
@@ -112,7 +120,9 @@ public class DonutAdapter extends BaseAdapter {
 //        }
 
         //tìm kiếm
-        EditText edtSearch = mainActivity_5a.findViewById(R.id.edtSearch);
+        //mainActivity_5a.findViewById(R.id.svDonut);
+
+        //EditText edtSearch = mainActivity_5a.findViewById(R.id.edtSearch);
 //        edtSearch.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -132,4 +142,53 @@ public class DonutAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    @Override
+    public Filter getFilter() {
+        return filterDonut;
+    }
+
+    private Filter filterDonut = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Donut> filterListDonut = new ArrayList<>();
+
+            if(charSequence==null || charSequence.length()==0 || charSequence.toString().isEmpty())
+                filterListDonut.addAll(listDonut);
+            else{
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for(Donut donut : listDonut){
+                    if(donut.getDonutName().toLowerCase().contains(filterPattern));
+                        filterListDonut.add(donut);
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filterListDonut;
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            listDonut.clear();
+            listDonut.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
+
+//    private class ItemFilter extends Filter {
+//
+//        @Override
+//        protected FilterResults performFiltering(CharSequence charSequence) {
+//            return null;
+//        }
+//
+//        @Override
+//        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//
+//        }
+//    }
 }

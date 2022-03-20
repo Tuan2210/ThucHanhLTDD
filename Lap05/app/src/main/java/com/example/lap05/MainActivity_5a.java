@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity_5a extends AppCompatActivity {
     private List<Donut> listDonut = new ArrayList<>();
@@ -43,6 +45,7 @@ public class MainActivity_5a extends AppCompatActivity {
         DonutAdapter adapter = new DonutAdapter(this, R.layout.activity_5a_item_custom_listview, listDonut);
         listView.setAdapter(adapter);
 
+        //truyền data btnPinkDonut
         findViewById(R.id.btnPinkDonut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,36 +58,30 @@ public class MainActivity_5a extends AppCompatActivity {
             }
         });
 
-//        EditText edtSearch = findViewById(R.id.edtSearch);
-//        edtSearch.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                donutAdapter.getFilter().filter(charSequence.toString());
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
+        //tìm kiếm
+        EditText edtSearch = findViewById(R.id.edtSearch);
+        edtSearch.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if(view.getId()==R.id.edtSearch && keyEvent.getAction()==KeyEvent.ACTION_DOWN && i==KeyEvent.KEYCODE_ENTER) {
+                    String text = edtSearch.getText().toString();
+                    List<Donut> listSearch = new ArrayList<>();
+                    ListView listView = findViewById(R.id.lvDonuts);
 
-//        SearchView svDonut = findViewById(R.id.svDonut);
-//        svDonut.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                donutAdapter.getFilter().filter(s);
-//                return false;
-//            }
-//        });
+                    for (Donut donut : listDonut) {
+                        if (donut.getDonutName().contains(text))
+                            listSearch.add(donut);
+                        if(!donut.getDonutName().contains(text))
+                            Toast.makeText(listView.getContext(), "Không tìm thấy donut!", Toast.LENGTH_SHORT).show();
+                        if(edtSearch.getText().toString().equals(""))
+                            Toast.makeText(listView.getContext(), "Chưa nhập tên donut tìm kiếm!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    DonutAdapter donutAdapter = new DonutAdapter(listView.getContext(), R.layout.activity_5a_item_custom_listview, listSearch);
+                    listView.setAdapter(donutAdapter);
+                }
+                return false;
+            }
+        });
     }
 }

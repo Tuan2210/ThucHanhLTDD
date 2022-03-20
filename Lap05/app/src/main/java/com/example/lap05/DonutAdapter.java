@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-public class DonutAdapter extends BaseAdapter implements Filterable {
+public class DonutAdapter extends BaseAdapter {
     private Context context;
     private int idLayout;
     private List<Donut> listDonut;
@@ -119,76 +119,6 @@ public class DonutAdapter extends BaseAdapter implements Filterable {
 //            });
 //        }
 
-        //tìm kiếm
-        //mainActivity_5a.findViewById(R.id.svDonut);
-
-        //EditText edtSearch = mainActivity_5a.findViewById(R.id.edtSearch);
-//        edtSearch.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
         return convertView;
     }
-
-    @Override
-    public Filter getFilter() {
-        return filterDonut;
-    }
-
-    private Filter filterDonut = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Donut> filterListDonut = new ArrayList<>();
-
-            if(charSequence==null || charSequence.length()==0 || charSequence.toString().isEmpty())
-                filterListDonut.addAll(listDonut);
-            else{
-                String filterPattern = charSequence.toString().toLowerCase().trim();
-                for(Donut donut : listDonut){
-                    if(donut.getDonutName().toLowerCase().contains(filterPattern));
-                        filterListDonut.add(donut);
-                }
-            }
-
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = filterListDonut;
-
-            return filterResults;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            listDonut.clear();
-            listDonut.addAll((List) filterResults.values);
-            notifyDataSetChanged();
-        }
-    };
-
-
-
-//    private class ItemFilter extends Filter {
-//
-//        @Override
-//        protected FilterResults performFiltering(CharSequence charSequence) {
-//            return null;
-//        }
-//
-//        @Override
-//        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-//
-//        }
-//    }
 }

@@ -5,6 +5,7 @@ public class Donut {
     private String donutName;
     private String donutPrice;
     private int imgDonut;
+    private String loaiDonut;
 
     public int getId() {
         return id;
@@ -38,10 +39,19 @@ public class Donut {
         this.imgDonut = imgDonut;
     }
 
-    public Donut(int id, String donutName, String donutPrice, int imgDonut) {
+    public String getLoaiDonut() {
+        return loaiDonut;
+    }
+
+    public void setLoaiDonut(String loaiDonut) {
+        this.loaiDonut = loaiDonut;
+    }
+
+    public Donut(int id, String donutName, String donutPrice, int imgDonut, String loaiDonut) {
         this.id = id;
         this.donutName = donutName;
         this.donutPrice = donutPrice;
         this.imgDonut = imgDonut;
+        this.loaiDonut = loaiDonut;
     }
 }

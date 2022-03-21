@@ -109,15 +109,10 @@ public class DonutAdapter extends BaseAdapter {
             }
         });
 
-//        if (positionSelect == position) {
-//            linearLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(mainActivity_5a, mainActivity_5b.getClass());
-//                    mainActivity_5a.startActivity(intent);
-//                }
-//            });
-//        }
+//        if (positionSelect == position)
+//            linearLayout.setBackgroundColor(Color.WHITE);
+//        else
+//            linearLayout.setBackgroundColor(Color.LTGRAY);
 
         return convertView;
     }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="#FFFFFF"
+    android:orientation="horizontal">
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/LinearLayout_Left"-->
+<!--        android:layout_width="203dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <View-->
+<!--            android:id="@+id/view_BG_Left"-->
+<!--            android:layout_width="177dp"-->
+<!--            android:layout_height="228dp"-->
+<!--            android:layout_marginLeft="12dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:background="@drawable/bg_item_listview" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imgHeart_Left"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:srcCompat="@drawable/heart"-->
+<!--            android:layout_marginTop="-220dp"-->
+<!--            android:layout_marginLeft="18dp"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imgBike_Left"-->
+<!--            android:layout_width="136dp"-->
+<!--            android:layout_height="123dp"-->
+<!--            app:srcCompat="@drawable/bifour__removebg_preview"-->
+<!--            android:layout_marginLeft="32dp"-->
+<!--            android:layout_marginTop="-20dp"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvName_Left"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:layout_marginLeft="55dp"-->
+<!--            android:text="Pinarello"-->
+<!--            android:textColor="#99000000"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv$_Left"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:text="$"-->
+<!--            android:textColor="#F7BA83"-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_marginLeft="58dp"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvPrice_Left"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:text="1800"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_marginTop="-35dp"-->
+<!--            android:layout_marginLeft="75dp"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/LinearLayout_Right"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--    <View-->
+<!--        android:id="@+id/view_BG_Right"-->
+<!--        android:layout_width="177dp"-->
+<!--        android:layout_height="228dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/bg_item_listview" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imgHeart_Right"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/heart"-->
+<!--        android:layout_marginTop="-220dp"-->
+<!--        android:layout_marginLeft="18dp"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imgBike_Right"-->
+<!--            android:layout_width="136dp"-->
+<!--            android:layout_height="123dp"-->
+<!--            android:layout_marginLeft="32dp"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            app:srcCompat="@drawable/bione_removebg_preview" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvName_Right"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_marginLeft="55dp"-->
+<!--        android:text="Pinarello"-->
+<!--        android:textColor="#99000000"-->
+<!--        android:textSize="20sp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv$_Right"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:text="$"-->
+<!--        android:textColor="#F7BA83"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_marginLeft="58dp"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvPrice_Right"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:text="1800"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_marginTop="-35dp"-->
+<!--        android:layout_marginLeft="75dp"/>-->
+<!--    </LinearLayout>-->
+</LinearLayout>

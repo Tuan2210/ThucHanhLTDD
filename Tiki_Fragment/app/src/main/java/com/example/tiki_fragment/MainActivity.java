@@ -11,12 +11,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()
-                                    .add(R.id.fragmentContainerView1, new FragmentAbove(), "fragmentAbove")
-                                    .commit();
-
-        getSupportFragmentManager().beginTransaction()
-                                    .add(R.id.fragmentContainerView2, new FragmentBelow(), "fragmentBelow")
-                                    .commit();
+        //vì là FragmentContainerView nên ko add = java code
+//        getSupportFragmentManager().beginTransaction()
+//                                    .add(R.id.fragmentContainerView1, new FragmentAbove(), "fragmentAbove")
+//                                    .commit();
+//
+//        getSupportFragmentManager().beginTransaction()
+//                                    .add(R.id.fragmentContainerView2, new FragmentBelow(), "fragmentBelow")
+//                                    .commit();
     }
 }

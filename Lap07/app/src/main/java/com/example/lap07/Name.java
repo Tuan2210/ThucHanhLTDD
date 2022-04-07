@@ -29,6 +29,9 @@ public class Name {
         this.name = name;
     }
 
+    public Name() {
+    }
+
     @Override
     public String toString() {
         return "Name{" +

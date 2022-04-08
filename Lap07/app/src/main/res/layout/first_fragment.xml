@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentFirst">
+    tools:context=".FirstFragment">
 
-
+    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
@@ -24,8 +24,9 @@
             android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:hint="Put name to add" />
+            android:background="@drawable/border_input"
+            android:hint="Put name to add"
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

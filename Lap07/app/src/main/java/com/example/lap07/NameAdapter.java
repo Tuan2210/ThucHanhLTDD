@@ -1,6 +1,7 @@
 package com.example.lap07;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -52,8 +54,8 @@ public class NameAdapter extends BaseAdapter {
     public View getView(final int i, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(viewGroup.getContext()).inflate(layout, viewGroup, false);
 
-        ListView listView = view.findViewById(R.id.lvName);
-        Button btnRemove = view.findViewById(R.id.btnRemove);
+        //ListView listView = view.findViewById(R.id.lvName);
+        //Button btnRemove = view.findViewById(R.id.btnRemove);
         TextView tvName = view.findViewById(R.id.tvName);
         final ConstraintLayout layoutName = view.findViewById(R.id.layoutName);
         final Name name = nameArrayList.get(i);
@@ -68,7 +70,15 @@ public class NameAdapter extends BaseAdapter {
         else
             layoutName.setBackgroundColor(Color.parseColor("#B36FBDA1"));
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.getContext().startActivity(new Intent(view.getContext(), MainActivity_Place.class));
+            }
+        });
+
         return view;
     }
+
 
 }

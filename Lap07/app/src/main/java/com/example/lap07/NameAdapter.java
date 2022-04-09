@@ -70,10 +70,15 @@ public class NameAdapter extends BaseAdapter {
         else
             layoutName.setBackgroundColor(Color.parseColor("#B36FBDA1"));
 
+        //pass data idName
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.getContext().startActivity(new Intent(view.getContext(), MainActivity_Place.class));
+                Intent intent=new Intent(new Intent(view.getContext(), MainActivity_Place.class));
+                intent.putExtra("id", name.getId());
+                view.getContext().startActivity(intent);
+
+                notifyDataSetChanged();
             }
         });
 

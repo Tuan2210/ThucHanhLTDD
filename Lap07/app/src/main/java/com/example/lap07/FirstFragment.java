@@ -40,7 +40,7 @@ public class FirstFragment extends Fragment {
         edtName = view.findViewById(R.id.edtName);
         btnAdd = view.findViewById(R.id.btnAdd);
         btnRemove = view.findViewById(R.id.btnRemove);
-        btnCancel = view.findViewById(R.id.btnCancel);
+        btnCancel = view.findViewById(R.id.btnCancel1);
 
         nameAdapter = new NameAdapter(view.getContext(), R.layout.item_name, nameArrayList, db);
         listView.setAdapter(nameAdapter);

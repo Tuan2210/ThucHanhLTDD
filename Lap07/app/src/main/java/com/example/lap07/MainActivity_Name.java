@@ -21,23 +21,6 @@ public class MainActivity_Name extends AppCompatActivity {
 //        getSupportFragmentManager().beginTransaction()
 //                                    .add(R.id.frmContainer, new FirstFragment(), "name_fragment").commit();
 
-
-
-//        View view = LayoutInflater.from(viewGroup.getContext()).inflate(layout, viewGroup, false);
-//        NameAdapter nameAdapter=new NameAdapter(view.getContext(), R.layout.item_name, nameArrayList, db);
-
-//        SecondFragment secondFragment=new SecondFragment();
-//
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////               getSupportFragmentManager().beginTransaction()
-////                                            .replace(R.id.frmContainer, new SecondFragment(), "second_fragment").commit();
-//            }
-//        });
-
-
     }
-
 
 }

@@ -6,6 +6,8 @@ public class Place {
     private int imgUpdate;
     private int imgDelete;
 
+    private Name name;
+
     public int getIdPlace() {
         return idPlace;
     }
@@ -38,17 +40,34 @@ public class Place {
         this.imgDelete = imgDelete;
     }
 
-    public Place(int idPlace, String namePlace, int imgUpdate, int imgDelete) {
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Place(int idPlace, String namePlace, int imgUpdate, int imgDelete, Name name) {
         this.idPlace = idPlace;
         this.namePlace = namePlace;
         this.imgUpdate = imgUpdate;
         this.imgDelete = imgDelete;
+        this.name = name;
     }
 
-    public Place(String namePlace, int imgUpdate, int imgDelete) {
+    public Place(String namePlace, int imgUpdate, int imgDelete, Name name) {
         this.namePlace = namePlace;
         this.imgUpdate = imgUpdate;
         this.imgDelete = imgDelete;
+        this.name = name;
+    }
+
+    public Place(String namePlace) {
+        this.namePlace = namePlace;
+    }
+
+    public Place() {
     }
 
     @Override
@@ -58,6 +77,7 @@ public class Place {
                 ", namePlace='" + namePlace + '\'' +
                 ", imgUpdate=" + imgUpdate +
                 ", imgDelete=" + imgDelete +
+                ", name=" + name +
                 '}';
     }
 }

@@ -19,14 +19,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_CONTACTS_PLACE = "Places";
     private static final String KEY_ID_2 = "idPlace";
     private static final String KEY_NAME_2 = "place";
+    private static final String KEY_FOREIGN = "nameId";
 
     private static final String create_table_names = "CREATE TABLE " + TABLE_CONTACTS_NAME + "("
                                                     + KEY_ID_1 + " INTEGER PRIMARY KEY, " + KEY_NAME_1 + " TEXT" + ")"+"\n";
     private static final String create_table_places = "CREATE TABLE " + TABLE_CONTACTS_PLACE + "("
                                                     + KEY_ID_2 + " INTEGER PRIMARY KEY, " + KEY_NAME_2 + " TEXT " +","
-                                                    + KEY_ID_1 + " INTEGER NOT NULL, "
-                                                    + "FOREIGN KEY ("+KEY_ID_1+")"
-                                                    + " REFERENCES " +TABLE_CONTACTS_NAME+ "("+KEY_ID_1+")" + ")";
+                                                    + KEY_FOREIGN + " INTEGER NOT NULL, "
+                                                    + "FOREIGN KEY ("+KEY_FOREIGN+") "
+                                                    + "REFERENCES " +TABLE_CONTACTS_NAME+ " ("+KEY_FOREIGN+")" + ")";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -148,15 +149,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     ////////////////////////////////////////
 
 //    public List<Place> getAllPlaces(Name name) {
-    public List<Place> getAllPlaces(int nameId) {
+    public List<Place> getAllPlaces(int nameID) {
         List<Place> placeList = new ArrayList<Place>();
 
 //        String selectQuery = "SELECT "+KEY_NAME_2+" from "+TABLE_CONTACTS_PLACE+" " +
 //                            "INNER JOIN "+TABLE_CONTACTS_NAME+" on Names.idName = Places.idName";
-        String selectQuery = "SELECT idplace, place from Places " +
-                             "INNER JOIN Names on Names.idName = places.idName " +
+        String selectQuery = "SELECT idPlace, place from Places " +
+                             "INNER JOIN Names on Names.idName = Places.nameId " +
 //                             "WHERE idName = " +name.getId()+ "";
-                             "WHERE idName = " +nameId+ "";
+                             "WHERE nameId = " +nameID;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -164,9 +165,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
+                Name name=new Name(nameID);
                 Place place=new Place();
                 place.setIdPlace(Integer.parseInt(cursor.getString(0)));
                 place.setNamePlace(cursor.getString(1));
+//                place.getName().setId(Integer.parseInt(cursor.getString(2)));
+                name.setId(Integer.parseInt(cursor.getString(2)));
 
                 placeList.add(place);
             } while (cursor.moveToNext());
@@ -176,16 +180,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return placeList;
     }
 
-    public void addPlace(Place place, int nameId) {
+//    public void addPlace(Place place) {
+    public boolean addPlace(String placeName, Name name) {
         SQLiteDatabase db = this.getWritableDatabase();
+//        db.setForeignKeyConstraintsEnabled(false);
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME_2, place.getNamePlace());
-        values.put(KEY_ID_1, nameId);
+//        values.put(KEY_NAME_2, place.getNamePlace());
+//        values.put(KEY_FOREIGN, place.getName().getId());
+        values.put(KEY_NAME_2, placeName);
+        values.put(KEY_FOREIGN, String.valueOf(name.getId()));
 
-        db.insert(TABLE_CONTACTS_PLACE, null, values);
+        long result = db.insert(TABLE_CONTACTS_PLACE, null, values);
+        if(result == -1)
+            return false;
+        else {
+//            db.setForeignKeyConstraintsEnabled(true);
+            return true;
+        }
 
-        db.close();
+//        db.close();
     }
 
     public void deletePlace(Place place) {

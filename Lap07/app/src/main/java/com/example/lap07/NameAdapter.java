@@ -3,6 +3,7 @@ package com.example.lap07;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class NameAdapter extends BaseAdapter {
@@ -78,12 +80,14 @@ public class NameAdapter extends BaseAdapter {
                 intent.putExtra("id", name.getId());
                 view.getContext().startActivity(intent);
 
+                String log = "nameId: "+name.getId()+ " name: "+name.getName();
+                Log.d("nameadapter", log);
+
                 notifyDataSetChanged();
             }
         });
 
         return view;
     }
-
 
 }

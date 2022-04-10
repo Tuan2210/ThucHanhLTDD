@@ -29,6 +29,10 @@ public class Name {
         this.name = name;
     }
 
+    public Name(int id) {
+        this.id = id;
+    }
+
     public Name() {
     }
 

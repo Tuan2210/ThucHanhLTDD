@@ -13,13 +13,6 @@ import java.util.List;
 
 @Dao
 public interface NameDao {
-//    @Query("SELECT * FROM name_table WHERE id IN (:nameId)")
-//    LiveData<ArrayList<Name>> loadAllByIds(int[] nameId);
-
-//    @Query("SELECT * FROM Name WHERE first_name LIKE :first AND " +
-//            "last_name LIKE :last LIMIT 1")
-//    User findByName(String first, String last);
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Name name);
 

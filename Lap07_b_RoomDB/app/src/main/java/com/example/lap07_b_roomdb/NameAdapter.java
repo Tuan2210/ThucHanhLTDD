@@ -1,27 +1,32 @@
 package com.example.lap07_b_roomdb;
 
-import android.content.Context;
-import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder> {
-    private List<Name> nameArrayList;
+    private static Name name=new Name();
+    private static List<Name> nameArrayList;
+    private ItemClickListener itemClickListener;
 
     public void setData(List<Name> arrayList){
         this.nameArrayList = arrayList;
         notifyDataSetChanged();
+    }
+
+    public NameAdapter() {
+    }
+
+    public NameAdapter(List<Name> nameArrayList, ItemClickListener itemClickListener) {
+        this.nameArrayList = nameArrayList;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -38,6 +43,10 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
         if(name==null)
             return;
         holder.tvName.setText(name.getName());
+
+        holder.itemView.setOnClickListener(view -> {
+            itemClickListener.onItemClick(nameArrayList.get(position));
+        });
     }
 
     @Override
@@ -47,6 +56,12 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
         return 0;
     }
 
+    //class interface ItemClickListener
+    public interface ItemClickListener{
+        void onItemClick(Name name);
+    }
+
+    //class NameViewHolder
     public static class NameViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
 

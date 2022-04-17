@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Lap08">
         <activity
             android:name=".MainActivity_face_screen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".MainActivity_register_screen"
             android:exported="false" />

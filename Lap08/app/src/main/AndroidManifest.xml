@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lap08">
         <activity
+            android:name=".MainActivity_face_screen"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_register_screen"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_sign_in_screen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity_start_screen"
             android:exported="true">
             <intent-filter>

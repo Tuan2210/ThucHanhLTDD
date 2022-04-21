@@ -10,7 +10,7 @@ public class AccDAO {
 
     public AccDAO() {
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName()).child("Account");
+        db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
     }
 
     public Task<Void> addAccount(Account account){

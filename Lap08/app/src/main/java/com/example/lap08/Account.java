@@ -13,20 +13,20 @@ import java.util.Map;
 
 //@IgnoreExtraProperties
 public class Account {
-//    private int id;
+    private int id;
     private String name;
     private String email;
     private String passWord;
 
 //    public Map<String, Boolean> stars = new HashMap<>();
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -52,17 +52,25 @@ public class Account {
         this.passWord = passWord;
     }
 
-//    public Account(int id, String name, String email, String passWord) {
-//        this.id = id;
-//        this.name = name;
-//        this.email = email;
-//        this.passWord = passWord;
-//    }
+    public Account(int id, String name, String email, String passWord) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.passWord = passWord;
+    }
 
     public Account(String name, String email, String passWord) {
         this.name = name;
         this.email = email;
         this.passWord = passWord;
+    }
+
+    public Account(int id) {
+        this.id = id;
+    }
+
+    public Account(String email) {
+        this.email = email;
     }
 
     public Account() {
@@ -80,7 +88,7 @@ public class Account {
 //        return result;
 //    }
 
-//@Entity(tableName = "acc_table")
+//@Entity(tableName = "acc_table")  //entity roomdb
 //public class Account {
 //    @PrimaryKey(autoGenerate = true)
 //    @NonNull

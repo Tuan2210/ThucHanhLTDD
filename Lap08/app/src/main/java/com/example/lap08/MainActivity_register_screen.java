@@ -24,12 +24,10 @@ import java.util.List;
 
 //Firebase
 public class MainActivity_register_screen extends AppCompatActivity {
-//    private Account account;
-//    private List<Account> accountList=new ArrayList<>();
-    private AccDAO accDAO=new AccDAO();
+    private Account acc;
     private DatabaseReference db;
 
-    long maxId = 0;
+    int maxId = 0;
 
     TextInputEditText edtRegisterName, edtRegisterEmail, edtRegisterPass, edtRegisterPassCheck;
     Button btnRegister2;
@@ -48,31 +46,26 @@ public class MainActivity_register_screen extends AppCompatActivity {
         tvRegisterGG = findViewById(R.id.tvRegisterGG);
         tvSignIn = findViewById(R.id.tvSignIn);
 
-//        getInfoAcc();
-
         register();
         signIn();
     }
 
-    public void getInfoAcc(Account acc) {
-//        accountList = Acc_RoomDB.getInstance(this).accDAO().loadAcc();
-//        for(Account acc : accountList) {
-            String log = "name: " + acc.getName()
+    public void getInfoAccRegister(Account acc) {
+        String log = "id: " +acc.getId() + ", name: " + acc.getName()
                     + ", email: " + acc.getEmail() + ", password: " + acc.getPassWord();
-            Log.d("text info account", log);
-//        }
+        Log.d("test info_acc register", log);
     }
 
     public void register() {
         btnRegister2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int accId = (maxId+1);
                 String txtName = edtRegisterName.getText().toString().trim(),
                         txtEmail = edtRegisterEmail.getText().toString().trim(),
                         txtPW = edtRegisterPass.getText().toString().trim(),
                         txtPWCheck = edtRegisterPassCheck.getText().toString().trim();
 
-                ///////RoomDB
                 //check empty
                 if (txtPWCheck.equals(""))
                     Toast.makeText(view.getContext(), "Vui lòng nhập lại mật khẩu đăng ký!", Toast.LENGTH_SHORT).show();
@@ -106,15 +99,16 @@ public class MainActivity_register_screen extends AppCompatActivity {
 //                        }
 
                         //cách 2: realtime db có set id auto generated (tăng tự động) và ko cần class AccDAO
-                        Account acc = new Account(txtName, txtEmail, txtPWCheck);
-//                        db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName()).child("acc_bla_bla"); //vidu: Account > acc_bla_bla (acc_bla_bla là con của Account)
+                        acc = new Account(accId, txtName, txtEmail, txtPWCheck);
+
                         db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
-                        db.child(String.valueOf("id: " +(maxId+1))).setValue(acc);
+                        db.child("id: " + acc.getId()).setValue(acc);  //Account > id > email, name, passWord
                         db.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(snapshot.exists())
-                                    maxId = snapshot.getChildrenCount();
+                                if(snapshot.exists()) {
+                                    maxId = (int) snapshot.getChildrenCount();
+                                }
                             }
 
                             @Override
@@ -122,7 +116,6 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
                             }
                         });
-
                         Toast.makeText(view.getContext(), "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
 
                         MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_sign_in_screen.class));
@@ -132,7 +125,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
                         edtRegisterPass.setText("");
                         edtRegisterPassCheck.setText("");
 
-                        getInfoAcc(acc);
+                        getInfoAccRegister(acc);
                     }
                     else
                         Toast.makeText(view.getContext(), "Mật khẩu nhập lại không khớp!", Toast.LENGTH_SHORT).show();
@@ -152,7 +145,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
 }
 
-////RoomDB
+////register with RoomDB
 //public class MainActivity_register_screen extends AppCompatActivity {
 //    private Account account;
 //    private List<Account> accountList=new ArrayList<>();
@@ -199,7 +192,6 @@ public class MainActivity_register_screen extends AppCompatActivity {
 //                        txtPW = edtRegisterPass.getText().toString().trim(),
 //                        txtPWCheck = edtRegisterPassCheck.getText().toString().trim();
 //
-//                ///////RoomDB
 //                //check empty
 //                if (txtPWCheck.equals(""))
 //                    Toast.makeText(view.getContext(), "Vui lòng nhập lại mật khẩu đăng ký!", Toast.LENGTH_SHORT).show();

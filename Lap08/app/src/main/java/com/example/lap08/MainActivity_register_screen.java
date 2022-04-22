@@ -28,10 +28,14 @@ public class MainActivity_register_screen extends AppCompatActivity {
     private DatabaseReference db;
 
     int maxId = 0;
+    int accId;
 
     TextInputEditText edtRegisterName, edtRegisterEmail, edtRegisterPass, edtRegisterPassCheck;
     Button btnRegister2;
     TextView tvRegisterGG,tvSignIn;
+
+    public MainActivity_register_screen() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
         register();
         signIn();
+
     }
 
     public void getInfoAccRegister(Account acc) {
@@ -60,7 +65,6 @@ public class MainActivity_register_screen extends AppCompatActivity {
         btnRegister2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int accId = (maxId+1);
                 String txtName = edtRegisterName.getText().toString().trim(),
                         txtEmail = edtRegisterEmail.getText().toString().trim(),
                         txtPW = edtRegisterPass.getText().toString().trim(),
@@ -99,14 +103,15 @@ public class MainActivity_register_screen extends AppCompatActivity {
 //                        }
 
                         //cách 2: realtime db có set id auto generated (tăng tự động) và ko cần class AccDAO
+                        accId = (maxId + 1);
                         acc = new Account(accId, txtName, txtEmail, txtPWCheck);
 
                         db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
-                        db.child("id: " + acc.getId()).setValue(acc);  //Account > id > email, name, passWord
+                        db.child("id: " + acc.getId()).setValue(acc);  //Account > id > email, id, name, passWord
                         db.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(snapshot.exists()) {
+                                if (snapshot.exists()) {
                                     maxId = (int) snapshot.getChildrenCount();
                                 }
                             }
@@ -116,9 +121,10 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
                             }
                         });
+
                         Toast.makeText(view.getContext(), "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
 
-                        MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_sign_in_screen.class));
+                        //MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_sign_in_screen.class));
 
                         edtRegisterName.setText("");
                         edtRegisterEmail.setText("");

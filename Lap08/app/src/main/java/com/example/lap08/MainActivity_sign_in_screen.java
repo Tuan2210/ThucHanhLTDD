@@ -1,5 +1,7 @@
 package com.example.lap08;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,12 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+//Firebase realtime db USE authentication
 public class MainActivity_sign_in_screen extends AppCompatActivity {
     private Account acc;
     private DatabaseReference db;
+    private FirebaseAuth firebaseAuth;
 
     TextInputEditText edtEmail, edtPass;
-    Button btnSignIn;
+    Button btnSignIn2;
     TextView tvForgotPass,tvSignInGG, tvRegisterHere;
 
     @Override
@@ -36,93 +44,67 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
 
         edtEmail = findViewById(R.id.edtEmail);
         edtPass = findViewById(R.id.edtPass);
-        btnSignIn = findViewById(R.id.btnSignIn2);
+        btnSignIn2 = findViewById(R.id.btnSignIn2);
         tvForgotPass = findViewById(R.id.tvForgotPass);
         tvSignInGG = findViewById(R.id.tvSignInGG);
         tvRegisterHere = findViewById(R.id.tvRegisterHere);
 
-        signIn();
+        firebaseAuth = FirebaseAuth.getInstance();
+        btnSignIn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
+
         forgotPW();
         signInWithGG();
         registerHere();
     }
 
     public void getInfoAccLogin(Account acc){
-        String log = "id: " +acc.getId() + "name: " + acc.getName()
+        String log = "name: " + acc.getName()
                 + ", email: " + acc.getEmail() + ", password: " + acc.getPassWord();
         Log.d("text info_acc login", log);
     }
 
     public void signIn() {
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txtEmail = edtEmail.getText().toString().trim(),
-                        txtPW = edtPass.getText().toString().trim();
+        String txtEmail = edtEmail.getText().toString().trim(),
+                txtPW = edtPass.getText().toString().trim();
 
-                //check empty
-                if (txtPW.equals(""))
-                    Toast.makeText(view.getContext(), "Vui lòng nhập mật khẩu đăng nhập!", Toast.LENGTH_SHORT).show();
-                if (txtEmail.equals(""))
-                    Toast.makeText(view.getContext(), "Vui lòng nhập email đăng nhập!", Toast.LENGTH_SHORT).show();
+        //check empty
+        if (txtPW.equals(""))
+            Toast.makeText(this, "Vui lòng nhập mật khẩu đăng nhập!", Toast.LENGTH_SHORT).show();
+        if (txtEmail.equals(""))
+            Toast.makeText(this, "Vui lòng nhập email đăng nhập!", Toast.LENGTH_SHORT).show();
 
-                if (!txtEmail.equals("") && !txtPW.equals("")) {
-                    db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
-                    db.addValueEventListener(new ValueEventListener() {
+        if (!txtEmail.equals("") && !txtPW.equals("")) {
+            firebaseAuth.signInWithEmailAndPassword(txtEmail, txtPW)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            if(snapshot.exists()) {
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {   //skip child id
-                                String txtExistEmail = dataSnapshot.child("email").getValue().toString(),
-                                        txtExistPW = dataSnapshot.child("passWord").getValue().toString();
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                acc = new Account(txtEmail, txtPW);
+                                getInfoAccLogin(acc);
 
-                                acc=new Account(txtExistEmail);
+                                edtEmail.setText("");
+                                edtPass.setText("");
+                                edtEmail.requestFocus();
 
-                                if(txtEmail.equals(txtExistEmail) && txtPW.equals(txtExistPW)) {
-                                    MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
-                                    Toast.makeText(view.getContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-
-                                    edtEmail.setText("");
-                                    edtPass.setText("");
-
-                                    getInfoAccLogin(acc);
-
-                                    db.onDisconnect();
-                                }
-
-//                                if (!txtEmail.equals(txtExistEmail))
-//                                    Toast.makeText(view.getContext(), "Tài khoản chưa được đăng ký!", Toast.LENGTH_SHORT).show();
-//                                else {
-//                                    if (!txtPW.equals(txtExistPW))
-//                                        Toast.makeText(view.getContext(), "Mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
-//                                    else {
-//                                        MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
-//                                        Toast.makeText(view.getContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-//
-//                                        edtEmail.setText("");
-//                                        edtPass.setText("");
-//
-//                                        getInfoAccLogin(acc);
-//                                    }
-//                                }
+                                MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
+                            } else {
+                                Toast.makeText(MainActivity_sign_in_screen.this, "Authentication login failed", Toast.LENGTH_SHORT).show();
                             }
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
                     });
-                }
-            }
-        });
+            Toast.makeText(this, "Tài khoản có email là " + txtEmail + " đăng nhập thành công", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void forgotPW() {
         tvForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
     }
@@ -131,7 +113,6 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
         tvRegisterHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
     }
@@ -145,31 +126,156 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
         });
     }
 
-    //đọc db
-//    public void basicReadWrite() {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
+}
+
+////Firebase realtime db NOT USE authentication
+//public class MainActivity_sign_in_screen extends AppCompatActivity {
+//    private Account acc;
+//    private DatabaseReference db;
 //
-//        myRef.setValue("Hello, World!");
+//    TextInputEditText edtEmail, edtPass;
+//    Button btnSignIn;
+//    TextView tvForgotPass,tvSignInGG, tvRegisterHere;
 //
-//        myRef.addValueEventListener(new ValueEventListener() {
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main_sign_in_screen);
+//
+//        edtEmail = findViewById(R.id.edtEmail);
+//        edtPass = findViewById(R.id.edtPass);
+//        btnSignIn = findViewById(R.id.btnSignIn2);
+//        tvForgotPass = findViewById(R.id.tvForgotPass);
+//        tvSignInGG = findViewById(R.id.tvSignInGG);
+//        tvRegisterHere = findViewById(R.id.tvRegisterHere);
+//
+//        signIn();
+//        forgotPW();
+//        signInWithGG();
+//        registerHere();
+//    }
+//
+//    public void getInfoAccLogin(Account acc){
+//        String log = "id: " +acc.getId() + "name: " + acc.getName()
+//                + ", email: " + acc.getEmail() + ", password: " + acc.getPassWord();
+//        Log.d("text info_acc login", log);
+//    }
+//
+//    public void signIn() {
+//        btnSignIn.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-//                Log.d(TAG, "Value is: " + value);
-//            }
+//            public void onClick(View view) {
+//                String txtEmail = edtEmail.getText().toString().trim(),
+//                        txtPW = edtPass.getText().toString().trim();
 //
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w(TAG, "Failed to read value.", error.toException());
+//                //check empty
+//                if (txtPW.equals(""))
+//                    Toast.makeText(view.getContext(), "Vui lòng nhập mật khẩu đăng nhập!", Toast.LENGTH_SHORT).show();
+//                if (txtEmail.equals(""))
+//                    Toast.makeText(view.getContext(), "Vui lòng nhập email đăng nhập!", Toast.LENGTH_SHORT).show();
+//
+//                if (!txtEmail.equals("") && !txtPW.equals("")) {
+//                    db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
+//                    db.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+////                            if(snapshot.exists()) {
+//                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {   //skip child id
+//                                String txtExistEmail = dataSnapshot.child("email").getValue().toString(),
+//                                        txtExistPW = dataSnapshot.child("passWord").getValue().toString();
+//
+//                                acc=new Account(txtExistEmail);
+//
+//                                if(txtEmail.equals(txtExistEmail) && txtPW.equals(txtExistPW)) {
+//                                    MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
+//                                    Toast.makeText(view.getContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+//
+//                                    edtEmail.setText("");
+//                                    edtPass.setText("");
+//                                    edtEmail.requestFocus();
+//
+//                                    getInfoAccLogin(acc);
+//
+//                                    db.onDisconnect();
+//                                }
+//
+////                                if (!txtEmail.equals(txtExistEmail))
+////                                    Toast.makeText(view.getContext(), "Tài khoản chưa được đăng ký!", Toast.LENGTH_SHORT).show();
+////                                else {
+////                                    if (!txtPW.equals(txtExistPW))
+////                                        Toast.makeText(view.getContext(), "Mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
+////                                    else {
+////                                        MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
+////                                        Toast.makeText(view.getContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+////
+////                                        edtEmail.setText("");
+////                                        edtPass.setText("");
+////
+////                                        getInfoAccLogin(acc);
+////                                    }
+////                                }
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//                        }
+//                    });
+//                }
 //            }
 //        });
-//        // [END read_message]
 //    }
-}
+//
+//    public void forgotPW() {
+//        tvForgotPass.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            }
+//        });
+//    }
+//
+//    public void signInWithGG() {
+//        tvRegisterHere.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            }
+//        });
+//    }
+//
+//    public void registerHere() {
+//        tvRegisterHere.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_register_screen.class));
+//            }
+//        });
+//    }
+//
+//    //đọc db
+////    public void basicReadWrite() {
+////        FirebaseDatabase database = FirebaseDatabase.getInstance();
+////        DatabaseReference myRef = database.getReference("message");
+////
+////        myRef.setValue("Hello, World!");
+////
+////        myRef.addValueEventListener(new ValueEventListener() {
+////            @Override
+////            public void onDataChange(DataSnapshot dataSnapshot) {
+////                // This method is called once with the initial value and again
+////                // whenever data at this location is updated.
+////                String value = dataSnapshot.getValue(String.class);
+////                Log.d(TAG, "Value is: " + value);
+////            }
+////
+////            @Override
+////            public void onCancelled(DatabaseError error) {
+////                // Failed to read value
+////                Log.w(TAG, "Failed to read value.", error.toException());
+////            }
+////        });
+////        // [END read_message]
+////    }
+//}
 
 ////sign in with RoomDB
 //public class MainActivity_sign_in_screen extends AppCompatActivity {

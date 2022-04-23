@@ -13,20 +13,20 @@ import java.util.Map;
 
 //@IgnoreExtraProperties
 public class Account {
-    private int id;
+//    private int id;   //nếu register - login chỉ bằng realtime db, ko authentication thì cần id
     private String name;
     private String email;
     private String passWord;
 
 //    public Map<String, Boolean> stars = new HashMap<>();
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
@@ -52,12 +52,12 @@ public class Account {
         this.passWord = passWord;
     }
 
-    public Account(int id, String name, String email, String passWord) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.passWord = passWord;
-    }
+//    public Account(int id, String name, String email, String passWord) {
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//        this.passWord = passWord;
+//    }
 
     public Account(String name, String email, String passWord) {
         this.name = name;
@@ -65,12 +65,17 @@ public class Account {
         this.passWord = passWord;
     }
 
-    public Account(int id) {
-        this.id = id;
-    }
+//    public Account(int id) {
+//        this.id = id;
+//    }
 
     public Account(String email) {
         this.email = email;
+    }
+
+    public Account(String email, String passWord) {
+        this.email = email;
+        this.passWord = passWord;
     }
 
     public Account() {

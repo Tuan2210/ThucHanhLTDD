@@ -3,6 +3,7 @@ package com.example.lap08;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,11 +33,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-//Firebase realtime db USE authentication
+//Firebase realtime db USE authentication; sign in with GG
 public class MainActivity_sign_in_screen extends AppCompatActivity {
     private Account acc;
     private DatabaseReference db;
     private FirebaseAuth firebaseAuth;
+
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
 
     TextInputEditText edtEmail, edtPass;
     Button btnSignIn2;
@@ -57,8 +66,16 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
             }
         });
 
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this, gso);
+        tvSignInGG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signInWithGG();
+            }
+        });
+
         forgotPW();
-        signInWithGG();
         registerHere();
     }
 
@@ -92,12 +109,13 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
                                 edtEmail.requestFocus();
 
                                 MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
+
+                                Toast.makeText(MainActivity_sign_in_screen.this, "Tài khoản có email là " + txtEmail + " đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(MainActivity_sign_in_screen.this, "Authentication login failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity_sign_in_screen.this, "Authentication login failed (mk phải nhập 6 kí tự trở lên)", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-            Toast.makeText(this, "Tài khoản có email là " + txtEmail + " đăng nhập thành công", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -110,11 +128,23 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
     }
 
     public void signInWithGG() {
-        tvRegisterHere.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        Intent intent = gsc.getSignInIntent();
+        startActivityForResult(intent, 100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==100){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_sign_in_screen.this, MainActivity_face_screen.class));
+            } catch (ApiException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Sign in with Google failed", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
     }
 
     public void registerHere() {

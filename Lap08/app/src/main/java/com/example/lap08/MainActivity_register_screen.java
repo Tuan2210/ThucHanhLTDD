@@ -106,6 +106,8 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
                                     MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_face_screen.class));
 
+                                    Toast.makeText(MainActivity_register_screen.this, "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
+
                                     edtRegisterName.setText("");
                                     edtRegisterEmail.setText("");
                                     edtRegisterPass.setText("");
@@ -114,14 +116,10 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
                                     getInfoAccRegister(acc);
                                 } else {
-                                    Toast.makeText(MainActivity_register_screen.this, "Authentication register failed", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự trong firebase
+                                    Toast.makeText(MainActivity_register_screen.this, "Authentication register failed (mk phải nhập 6 kí tự trở lên)", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự trong firebase
                                 }
                             }
                         });
-
-                Toast.makeText(this, "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
-
-
             }
             else
                 Toast.makeText(this, "Mật khẩu nhập lại không khớp!", Toast.LENGTH_SHORT).show();

@@ -1,12 +1,22 @@
 package com.example.lap08;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class MainActivity_face_screen extends AppCompatActivity {
     boolean clickHappyFace = false,
@@ -14,8 +24,11 @@ public class MainActivity_face_screen extends AppCompatActivity {
             clickSadFace = false,
             clickFinish = true;
 
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
+
     ImageView imgHappy4, imgNormal4, imgSad4;
-    Button btnFinish;
+    Button btnFinish, btnSignOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,7 @@ public class MainActivity_face_screen extends AppCompatActivity {
         imgNormal4 = findViewById(R.id.imgNormal4);
         imgSad4 = findViewById(R.id.imgSad4);
         btnFinish = findViewById(R.id.btnFinish);
+        btnSignOut = findViewById(R.id.btnSignOut);
 
         //choose happy face
         imgHappy4.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +97,28 @@ public class MainActivity_face_screen extends AppCompatActivity {
 //                    clickSadFace = false;
                     clickFinish = false;
                 }
+            }
+        });
+
+        //btnSignOut
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this, gso);
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//        Log.d("test infoAccGG", "info acc gg:" +account.getEmail());
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
+    }
+
+    public void signOut(){
+        gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                finish();
+                MainActivity_face_screen.this.startActivity(new Intent(MainActivity_face_screen.this, MainActivity_sign_in_screen.class));
             }
         });
     }

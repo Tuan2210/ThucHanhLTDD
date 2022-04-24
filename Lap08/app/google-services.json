@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "118601670479",
-    "project_id": "lap08-account-facescreen",
-    "storage_bucket": "lap08-account-facescreen.appspot.com"
+    "project_number": "163351513419",
+    "project_id": "lap08-account-facescreen-de5bb",
+    "storage_bucket": "lap08-account-facescreen-de5bb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:118601670479:android:de93589da8487672626f3a",
+        "mobilesdk_app_id": "1:163351513419:android:b2a7f6db68e318bfa500ce",
         "android_client_info": {
           "package_name": "com.example.lap08"
         }
       },
       "oauth_client": [
         {
-          "client_id": "118601670479-gpkn1a3jjlujrvsjfugn5c0p4tf93rai.apps.googleusercontent.com",
+          "client_id": "163351513419-hg9h8nhsi9ef4a458707mu72imsko9j1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCv2dQUfqDLOH7mw6xIgUpM9Y1foGzZ4F4"
+          "current_key": "AIzaSyBdgjx_rVSChEYZPYxSAWmker0n0bYOke4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "118601670479-gpkn1a3jjlujrvsjfugn5c0p4tf93rai.apps.googleusercontent.com",
+              "client_id": "163351513419-hg9h8nhsi9ef4a458707mu72imsko9j1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

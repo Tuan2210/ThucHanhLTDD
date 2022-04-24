@@ -1,16 +1,5 @@
 package com.example.lap08;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-import com.google.firebase.database.Exclude;
-import com.google.firebase.database.IgnoreExtraProperties;
-
-import java.util.HashMap;
-import java.util.Map;
-
 //@IgnoreExtraProperties
 public class Account {
 //    private int id;   //nếu register - login chỉ bằng realtime db, ko authentication thì cần id

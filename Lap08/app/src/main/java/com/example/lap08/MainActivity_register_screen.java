@@ -100,13 +100,16 @@ public class MainActivity_register_screen extends AppCompatActivity {
                 db.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            String emailExist = dataSnapshot.child("email").getValue().toString();
-                            if(txtEmail.equals(emailExist))
-                                Toast.makeText(MainActivity_register_screen.this, "Email này đã được đăng ký", Toast.LENGTH_SHORT).show();
-                            else
-                                createUserFirebaseAuth(txtName, txtEmail, txtPWCheck);
-                        }
+                        if(snapshot.exists()) {
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                String emailExist = dataSnapshot.child("email").getValue().toString();
+                                if (txtEmail.equals(emailExist))
+                                    Toast.makeText(MainActivity_register_screen.this, "Email này đã được đăng ký", Toast.LENGTH_SHORT).show();
+                                else
+                                    createUserFirebaseAuth(txtName, txtEmail, txtPWCheck);
+                            }
+                        } else
+                            createUserFirebaseAuth(txtName, txtEmail, txtPWCheck);
                     }
 
                     @Override
@@ -247,7 +250,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
 ////                                Toast.makeText(view.getContext(), "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
 ////
 ////                                MainActivity_sign_in_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_face_screen.class));
-
+//
 ////                                edtRegisterName.setText("");
 ////                                edtRegisterEmail.setText("");
 ////                                edtRegisterPass.setText("");

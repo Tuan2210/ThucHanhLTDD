@@ -1,4 +1,4 @@
-//package com.example.lap08;
+package com.example.lap08;//package com.example.lap08;
 //
 //import android.content.Context;
 //

@@ -17,12 +17,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity_face_screen extends AppCompatActivity {
     boolean clickHappyFace = false,
             clickNormalFace = false,
             clickSadFace = false,
             clickFinish = true;
+
+    private FirebaseAuth firebaseAuth;
 
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
@@ -101,6 +104,8 @@ public class MainActivity_face_screen extends AppCompatActivity {
         });
 
         //btnSignOut
+        firebaseAuth = FirebaseAuth.getInstance();
+
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this, gso);
 //        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
@@ -114,6 +119,7 @@ public class MainActivity_face_screen extends AppCompatActivity {
     }
 
     public void signOut(){
+        firebaseAuth.signOut();
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

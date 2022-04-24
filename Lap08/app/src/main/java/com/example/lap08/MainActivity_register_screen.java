@@ -69,12 +69,14 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
     }
 
+    //get info acc register
     public void getInfoAccRegister(Account acc) {
         String log = "name: " + acc.getName()
                 + ", email: " + acc.getEmail() + ", password: " + acc.getPassWord();
         Log.d("test info_acc register", log);
     }
 
+    //register
     public void register() {
         String txtName = edtRegisterName.getText().toString().trim(),
                 txtEmail = edtRegisterEmail.getText().toString().trim(),
@@ -94,38 +96,61 @@ public class MainActivity_register_screen extends AppCompatActivity {
         //insert account
         if (!txtName.equals("") && !txtEmail.equals("") && !txtPW.equals("") && !txtPWCheck.equals("")) {
             if(txtPWCheck.equals(txtPW)) {
-                firebaseAuth.createUserWithEmailAndPassword(txtEmail, txtPWCheck)
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() { //addOnCompleteListener ko đặt trực tiếp trong setOnClickListener
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-//                                    String idUser = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-//                                    accId = (maxId + 1);
-                                    acc = new Account(txtName, txtEmail, txtPWCheck);
-                                    addDataUser(acc);
+                db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
+                db.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            String emailExist = dataSnapshot.child("email").getValue().toString();
+                            if(txtEmail.equals(emailExist))
+                                Toast.makeText(MainActivity_register_screen.this, "Email này đã được đăng ký", Toast.LENGTH_SHORT).show();
+                            else
+                                createUserFirebaseAuth(txtName, txtEmail, txtPWCheck);
+                        }
+                    }
 
-                                    MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_face_screen.class));
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                                    Toast.makeText(MainActivity_register_screen.this, "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
-
-                                    edtRegisterName.setText("");
-                                    edtRegisterEmail.setText("");
-                                    edtRegisterPass.setText("");
-                                    edtRegisterPassCheck.setText("");
-                                    edtRegisterName.requestFocus();
-
-                                    getInfoAccRegister(acc);
-                                } else {
-                                    Toast.makeText(MainActivity_register_screen.this, "Authentication register failed (mk phải nhập 6 kí tự trở lên)", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự trong firebase
-                                }
-                            }
-                        });
+                    }
+                });
             }
             else
                 Toast.makeText(this, "Mật khẩu nhập lại không khớp!", Toast.LENGTH_SHORT).show();
         }
     }
 
+    //create user in firebase authentication
+    public void createUserFirebaseAuth(String txtName, String txtEmail, String txtPWCheck){
+        firebaseAuth.createUserWithEmailAndPassword(txtEmail, txtPWCheck)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() { //addOnCompleteListener ko đặt trực tiếp trong setOnClickListener
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+//                            String idUser = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+//                            accId = (maxId + 1);
+                            acc = new Account(txtName, txtEmail, txtPWCheck);
+                            addDataUser(acc);
+
+                            MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_face_screen.class));
+
+                            Toast.makeText(MainActivity_register_screen.this, "Tài khoản có email là " + txtEmail + " đăng ký thành công", Toast.LENGTH_SHORT).show();
+
+                            edtRegisterName.setText("");
+                            edtRegisterEmail.setText("");
+                            edtRegisterPass.setText("");
+                            edtRegisterPassCheck.setText("");
+                            edtRegisterName.requestFocus();
+
+                            getInfoAccRegister(acc);
+                        } else {
+                            Toast.makeText(MainActivity_register_screen.this, "Authentication register failed (mk phải nhập 6 kí tự trở lên, có chữ và số)", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự trong firebase
+                        }
+                    }
+                });
+    }
+
+    //insert data to realtime db
     public void addDataUser(Account acc) {
         db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
         db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(acc);  //Account > id (uId) > email, id (uId), name, passWord
@@ -142,6 +167,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
         });
     }
 
+    //sign in
     public void signIn() {
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

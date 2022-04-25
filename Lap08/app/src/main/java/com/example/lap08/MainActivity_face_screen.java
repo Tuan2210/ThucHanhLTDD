@@ -18,17 +18,27 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity_face_screen extends AppCompatActivity {
-    boolean clickHappyFace = false,
-            clickNormalFace = false,
-            clickSadFace = false,
-            clickFinish = true;
+//    boolean clickHappyFace = false,
+//            clickNormalFace = false,
+//            clickSadFace = false,
+//            clickFinish = true;
 
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference db;
 
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
+
+    private int happNum = 0;
+    private int normalNum = 0;
+    private int sadNum = 0;
 
     ImageView imgHappy4, imgNormal4, imgSad4;
     Button btnFinish, btnSignOut;
@@ -54,7 +64,13 @@ public class MainActivity_face_screen extends AppCompatActivity {
         imgHappy4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickHappyFace = true;
+//                clickHappyFace = true;
+                happNum++;
+
+                db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("happy");
+                db.setValue(happNum);
+
                 Toast.makeText(MainActivity_face_screen.this, "Đã chọn mặt cười", Toast.LENGTH_SHORT).show();
             }
         });
@@ -63,7 +79,12 @@ public class MainActivity_face_screen extends AppCompatActivity {
         imgNormal4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickNormalFace = true;
+//                clickNormalFace = true;
+                normalNum++;
+                db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("normal");
+                db.setValue(normalNum);
+
                 Toast.makeText(MainActivity_face_screen.this, "Đã chọn mặt bình thường", Toast.LENGTH_SHORT).show();
             }
         });
@@ -72,7 +93,13 @@ public class MainActivity_face_screen extends AppCompatActivity {
         imgSad4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickSadFace = true;
+//                clickSadFace = true;
+                sadNum++;
+
+                db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("sad");
+                db.setValue(sadNum);
+
                 Toast.makeText(MainActivity_face_screen.this, "Đã chọn mặt buồn", Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,25 +108,44 @@ public class MainActivity_face_screen extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickHappyFace == true) {
-                    Toast.makeText(MainActivity_face_screen.this, "Bạn đang hạnh phúc! :)", Toast.LENGTH_SHORT).show();
-                    clickHappyFace = false;
-                }
-                if (clickNormalFace == true) {
-                    Toast.makeText(MainActivity_face_screen.this, "Không cảm xúc như Hồ Quang Hiếu! :|", Toast.LENGTH_SHORT).show();
-                    clickNormalFace = false;
-                }
-                if (clickSadFace == true) {
-                    Toast.makeText(MainActivity_face_screen.this, "Đừng buồn nữa, hãy vui lên! - HQH said =))", Toast.LENGTH_SHORT).show();
-                    clickSadFace = false;
-                }
-                if(clickFinish == true && clickHappyFace == false && clickNormalFace == false && clickSadFace == false) {
-                    Toast.makeText(MainActivity_face_screen.this, "Chưa chọn trạng thái mặt", Toast.LENGTH_SHORT).show();
+//                if (clickHappyFace == true) {
+//                    Toast.makeText(MainActivity_face_screen.this, "Bạn đang hạnh phúc! :)", Toast.LENGTH_SHORT).show();
 //                    clickHappyFace = false;
+//                }
+//                if (clickNormalFace == true) {
+//                    Toast.makeText(MainActivity_face_screen.this, "Không cảm xúc như Hồ Quang Hiếu! :|", Toast.LENGTH_SHORT).show();
 //                    clickNormalFace = false;
+//                }
+//                if (clickSadFace == true) {
+//                    Toast.makeText(MainActivity_face_screen.this, "Đừng buồn nữa, hãy vui lên! - HQH said =))", Toast.LENGTH_SHORT).show();
 //                    clickSadFace = false;
-                    clickFinish = false;
-                }
+//                }
+//                if(clickFinish == true && clickHappyFace == false && clickNormalFace == false && clickSadFace == false) {
+//                    Toast.makeText(MainActivity_face_screen.this, "Chưa chọn trạng thái mặt", Toast.LENGTH_SHORT).show();
+////                    clickHappyFace = false;
+////                    clickNormalFace = false;
+////                    clickSadFace = false;
+//                    clickFinish = false;
+//                }
+                db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                db.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()) {
+                            String happy = snapshot.child("happy").getValue().toString(),
+                                    normal = snapshot.child("normal").getValue().toString(),
+                                    sad = snapshot.child("sad").getValue().toString();
+                            Toast.makeText(MainActivity_face_screen.this, "Happy: " + happy + ", Normal: " + normal + ", Sad: " + sad, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         });
 
@@ -128,4 +174,5 @@ public class MainActivity_face_screen extends AppCompatActivity {
             }
         });
     }
+
 }

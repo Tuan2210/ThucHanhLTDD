@@ -132,7 +132,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
                         if (task.isSuccessful()) {
 //                            String idUser = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
 //                            accId = (maxId + 1);
-                            acc = new Account(txtName, txtEmail, txtPWCheck);
+                            acc = new Account(txtName, txtEmail, txtPWCheck, 0 , 0, 0);
                             addDataUser(acc);
 
                             MainActivity_register_screen.this.startActivity(new Intent(MainActivity_register_screen.this, MainActivity_face_screen.class));
@@ -147,7 +147,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
 
                             getInfoAccRegister(acc);
                         } else {
-                            Toast.makeText(MainActivity_register_screen.this, "Authentication register failed (mk phải nhập 6 kí tự trở lên, có chữ và số)", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự trong firebase
+                            Toast.makeText(MainActivity_register_screen.this, "Authentication register failed", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự, có chữ và số trong firebase
                         }
                     }
                 });
@@ -156,7 +156,7 @@ public class MainActivity_register_screen extends AppCompatActivity {
     //insert data to realtime db
     public void addDataUser(Account acc) {
         db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName());
-        db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(acc);  //Account > id (uId) > email, id (uId), name, passWord
+        db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(acc);  //Account > id (uId) > email, id (uId), name, passWord, happy, normal, sad
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

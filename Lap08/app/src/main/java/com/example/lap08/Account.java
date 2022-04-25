@@ -6,6 +6,9 @@ public class Account {
     private String name;
     private String email;
     private String passWord;
+    private int happy;
+    private int normal;
+    private int sad;
 
 //    public Map<String, Boolean> stars = new HashMap<>();
 
@@ -41,7 +44,31 @@ public class Account {
         this.passWord = passWord;
     }
 
-//    public Account(int id, String name, String email, String passWord) {
+    public int getHappy() {
+        return happy;
+    }
+
+    public void setHappy(int happy) {
+        this.happy = happy;
+    }
+
+    public int getNormal() {
+        return normal;
+    }
+
+    public void setNormal(int normal) {
+        this.normal = normal;
+    }
+
+    public int getSad() {
+        return sad;
+    }
+
+    public void setSad(int sad) {
+        this.sad = sad;
+    }
+
+    //    public Account(int id, String name, String email, String passWord) {
 //        this.id = id;
 //        this.name = name;
 //        this.email = email;
@@ -54,7 +81,16 @@ public class Account {
         this.passWord = passWord;
     }
 
-//    public Account(int id) {
+    public Account(String name, String email, String passWord, int happy, int normal, int sad) {
+        this.name = name;
+        this.email = email;
+        this.passWord = passWord;
+        this.happy = happy;
+        this.normal = normal;
+        this.sad = sad;
+    }
+
+    //    public Account(int id) {
 //        this.id = id;
 //    }
 

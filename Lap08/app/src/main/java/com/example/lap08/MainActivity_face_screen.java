@@ -36,7 +36,7 @@ public class MainActivity_face_screen extends AppCompatActivity {
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
 
-    private int happNum = 0;
+    private int happyNum = 0;
     private int normalNum = 0;
     private int sadNum = 0;
 
@@ -65,11 +65,10 @@ public class MainActivity_face_screen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                clickHappyFace = true;
-                happNum++;
-
+                happyNum++;
                 db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("happy");
-                db.setValue(happNum);
+                db.setValue(happyNum);
 
                 Toast.makeText(MainActivity_face_screen.this, "Đã chọn mặt cười", Toast.LENGTH_SHORT).show();
             }
@@ -95,7 +94,6 @@ public class MainActivity_face_screen extends AppCompatActivity {
             public void onClick(View view) {
 //                clickSadFace = true;
                 sadNum++;
-
                 db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("sad");
                 db.setValue(sadNum);
@@ -138,6 +136,7 @@ public class MainActivity_face_screen extends AppCompatActivity {
                                     sad = snapshot.child("sad").getValue().toString();
                             Toast.makeText(MainActivity_face_screen.this, "Happy: " + happy + ", Normal: " + normal + ", Sad: " + sad, Toast.LENGTH_SHORT).show();
                         }
+                        else Toast.makeText(MainActivity_face_screen.this, "Chưa chọn mặt", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -165,6 +164,27 @@ public class MainActivity_face_screen extends AppCompatActivity {
     }
 
     public void signOut(){
+//        db = FirebaseDatabase.getInstance().getReference(Account.class.getSimpleName())
+//                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//        db.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+//                    happyNum = Integer.parseInt(snapshot.child("happy").getValue().toString());
+//                    normalNum = Integer.parseInt(snapshot.child("normal").getValue().toString());
+//                    sadNum = Integer.parseInt(snapshot.child("sad").getValue().toString());
+//
+//                    happyNum = 0; normalNum = 0; sadNum = 0;
+//                    db.setValue(happyNum); db.setValue(normalNum); db.setValue(sadNum);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
         firebaseAuth.signOut();
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

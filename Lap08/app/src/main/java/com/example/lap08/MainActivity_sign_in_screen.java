@@ -112,7 +112,7 @@ public class MainActivity_sign_in_screen extends AppCompatActivity {
 
                                 Toast.makeText(MainActivity_sign_in_screen.this, "Tài khoản có email là " + txtEmail + " đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(MainActivity_sign_in_screen.this, "Authentication login failed (mk phải nhập 6 kí tự trở lên)", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity_sign_in_screen.this, "Authentication sign in failed", Toast.LENGTH_SHORT).show(); //password phải nhập >= 6 kí tự, có chữ và số trong firebase
                             }
                         }
                     });

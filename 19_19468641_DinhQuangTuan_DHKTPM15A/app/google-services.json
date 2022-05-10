@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "496744917499",
+    "firebase_url": "https://dinhquangtuan-d4c3f-default-rtdb.firebaseio.com",
+    "project_id": "dinhquangtuan-d4c3f",
+    "storage_bucket": "dinhquangtuan-d4c3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496744917499:android:a8d0bbe9b5f72a05b1c35e",
+        "android_client_info": {
+          "package_name": "com.example.a19_19468641_dinhquangtuan_dhktpm15a"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496744917499-ttud437if3k4nh6lu2d1o7tcn6bt178m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAECb85E-vsfDG2p6Q5HPk8-IqKWu-iMbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496744917499-ttud437if3k4nh6lu2d1o7tcn6bt178m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
